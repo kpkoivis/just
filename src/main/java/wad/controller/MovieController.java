@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.SpaceResource;
+import wad.domain.resource.SpacialResource;
 import wad.domain.Reservation;
-import wad.repository.ActorRepository;
+import wad.repository.ResourceRepository;
 import wad.repository.MovieRepository;
 
 @Controller
 @RequestMapping("movies")
 public class MovieController {
-
+/*
     @Autowired
-    private ActorRepository actorRepository;
+    private ResourceRepository actorRepository;
     @Autowired
     private MovieRepository movieRepository;
 
@@ -39,12 +39,13 @@ public class MovieController {
     @RequestMapping(value = "/{movieId}", method = RequestMethod.DELETE)
     public String deleteMovie(@PathVariable Long movieId) {
         Reservation movie = movieRepository.findOne(movieId);
-        List<SpaceResource> actors = movie.getActors();
-        for (SpaceResource a : actors) {
+        List<SpacialResource> actors = movie.getActors();
+        for (SpacialResource a : actors) {
             a.getMovies().remove(movie);
             actorRepository.save(a);
         }
         movieRepository.delete(movie);
         return "redirect:/movies";
     }
+    */
 }

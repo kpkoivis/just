@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author kris
  */
 @Entity
-class Person extends AbstractPersistable<Long> {
+public class Person extends AbstractPersistable<Long> {
     
     private String identifier;
     @ManyToMany

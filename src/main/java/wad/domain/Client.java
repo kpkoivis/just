@@ -5,11 +5,7 @@
  */
 package wad.domain;
 
-import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -17,9 +13,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author kris
  */
 @Entity
-public class Resource extends AbstractPersistable<Long> {
-        @Column
-    private String name;
-    @ManyToMany(mappedBy = "space", fetch = FetchType.EAGER)
-    private List<Reservation> reservations;
+public class Client extends AbstractPersistable<Long>{
+    
 }

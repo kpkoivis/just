@@ -5,7 +5,12 @@
  */
 package wad.domain;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -22,11 +27,13 @@ public class Event extends AbstractPersistable<Long> {
     
     private String Description;
     private DateTime startTime;
-    private DateTime endTime;  
-    @OneToOne
-    private Reservation spaceReservation;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<PersonRolePair> participants;
+    private DateTime endTime;
+    @Column
+    @ElementCollection(targetClass=Reservation.class)
+    private Set<Reservation> resourceReservations;
+    @Column
+    @ElementCollection(targetClass=Client.class)
+    private Set<Client> clients;
 
     public String getDescription() {
         return Description;
@@ -52,22 +59,21 @@ public class Event extends AbstractPersistable<Long> {
         this.endTime = endTime;
     }
 
-    public Reservation getSpaceReservation() {
-        return spaceReservation;
+    public Collection<Reservation> getResourceReservations() {
+        return resourceReservations;
     }
 
-    public void setSpaceReservation(Reservation spaceReservation) {
-        this.spaceReservation = spaceReservation;
+    public void setResourceReservations(Set<Reservation> resourceReservations) {
+        this.resourceReservations = resourceReservations;
     }
 
-    public List<PersonRolePair> getParticipants() {
-        return participants;
+    public Collection<Client> getClients() {
+        return clients;
     }
 
-    public void setParticipants(List<PersonRolePair> participants) {
-        this.participants = participants;
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
-    
-    
+
     
 }
